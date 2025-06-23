@@ -1,0 +1,6 @@
+@KoperasiRegistrationAPI_HostAddress = http://localhost:5108
+
+GET {{KoperasiRegistrationAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
