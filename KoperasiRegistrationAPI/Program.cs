@@ -13,6 +13,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<KoperasiAccountsDbContext>(options =>
    options.UseSqlServer(builder.Configuration.GetConnectionString("KoperasiDbConnection")));
 builder.Services.AddScoped<IAccountRepository, AccountRepository>();
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.  
