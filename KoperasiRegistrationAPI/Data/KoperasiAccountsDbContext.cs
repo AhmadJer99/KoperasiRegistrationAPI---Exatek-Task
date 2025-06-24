@@ -14,10 +14,10 @@ public class KoperasiAccountsDbContext : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         // one-to-one relationship between Account and PinInfo
-        modelBuilder.Entity<PinInfo>()
-            .HasOne<Account>()                         // One Account
-            .WithOne()                                 // Has One PinInfo
-            .HasForeignKey<PinInfo>(p => p.AccountId); // FK is AccountId
+        modelBuilder.Entity<Account>()
+        .HasOne(a => a.PinInfo)
+        .WithOne(p => p.Account)
+        .HasForeignKey<PinInfo>(p => p.AccountId);
 
         base.OnModelCreating(modelBuilder);
     }

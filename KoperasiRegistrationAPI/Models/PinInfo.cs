@@ -6,5 +6,6 @@ public class PinInfo
     public int AccountId { get; set; }
     public string? PinCode { get; set; }
     public bool IsConfirmed { get; set; }
+    public Account? Account { get; set; }
 }
 

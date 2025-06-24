@@ -7,6 +7,7 @@ public class RegistrationSession
     public RegisterRequest? RegistrationData { get; set; }
     public bool IsEmailVerified { get; set; } = false;
     public bool IsPhoneVerified { get; set; } = false;
+    public bool IsPolicyAccepted { get; set; } = false;
 }
 
 public static class RegistrationSessionStore

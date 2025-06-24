@@ -7,4 +7,6 @@ public class Account
     public string? ICNumber { get; set; }
     public string? PhoneNumber { get; set; }
     public string? Email { get; set; }
+
+    public PinInfo? PinInfo { get; set; }  
 }

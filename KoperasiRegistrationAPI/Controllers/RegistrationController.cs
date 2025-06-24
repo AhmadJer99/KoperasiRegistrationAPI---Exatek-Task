@@ -18,7 +18,7 @@ public class RegistrationController : ControllerBase
     }
 
     [HttpGet("api/registration")]
-    public async Task<IActionResult>  GetRegistrationInfo()
+    public async Task<IActionResult> GetRegistrationInfo()
     {
         return Ok(new { Message = "Registration information retrieved successfully." });
     }
@@ -76,6 +76,21 @@ public class RegistrationController : ControllerBase
             EmailVerified = session.IsEmailVerified,
             PhoneVerified = session.IsPhoneVerified
         });
+    }
+
+    [HttpPost("accept-policy")]
+    public IActionResult AcceptPolicy([FromBody] PolicyAcceptanceRequest request)
+    {
+        var session = RegistrationSessionStore.GetSession(request.SessionId);
+        if (session == null)
+            return NotFound(new { Message = "Session not found." });
+
+        if (!request.IsAccepted)
+            return BadRequest(new { Message = "You must accept the policy to continue." });
+
+        session.IsPolicyAccepted = true;
+
+        return Ok(new { Message = "Policy accepted." });
     }
 
     [HttpPost("api/registration/complete")]
